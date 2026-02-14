@@ -110,9 +110,6 @@ Seg_UKAN/
 ├── .gitignore
 └── README.md
 
-yaml
-Copy code
-
 ---
 
 ## 📊 Dataset
@@ -140,9 +137,6 @@ datasets/
 └── test/
 ├── images/
 └── masks/
-
-yaml
-Copy code
 
 ---
 
@@ -214,4 +208,3 @@ Taraka Ram Paladugu
 📜 License
 MIT License
 
-- Signals research maturity
