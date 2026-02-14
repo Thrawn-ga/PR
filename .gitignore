@@ -1,0 +1,7 @@
+datasets/
+outputs/
+*.pth
+__pycache__/
+*.pyc
+Thumbs.db
+events.out.tfevents*
