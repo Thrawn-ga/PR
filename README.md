@@ -1,28 +1,47 @@
-# Seg_UKAN – Retinal Vessel Segmentation using U-KAN
+# Seg_UKAN – Retinal Image Segmentation and Classification using U-KAN
 
-This repository implements a segmentation framework based on U-KAN for retinal vessel segmentation using the FIVES dataset.
+This repository implements a multi-task deep learning framework for:
+
+- 🩸 Retinal Vessel Segmentation
+- 🧠 Retinal Disease Classification
+
+using a U-KAN-based architecture and the FIVES dataset.
 
 ---
 
 ## 📌 Overview
 
-Retinal vessel segmentation is a critical task in medical image analysis for diagnosing diseases such as:
+Retinal image analysis plays a critical role in detecting and monitoring:
 
 - Diabetic Retinopathy
 - Glaucoma
-- Hypertension-related retinopathy
+- Vascular abnormalities
+- Other retinal conditions
 
-This project uses a U-KAN-based architecture to perform pixel-wise segmentation of retinal vessels.
+This project performs:
+
+1. Pixel-wise vessel segmentation  
+2. Image-level classification  
+
+using a unified deep learning architecture.
 
 ---
 
 ## 🧠 Model Architecture
 
-The model combines:
+The framework includes:
 
 - U-shaped encoder–decoder structure
-- KAN-based feature transformation
-- Skip connections for multi-scale feature fusion
+- KAN-based feature transformation layers
+- Skip connections for multi-scale feature learning
+- Classification head for disease prediction
+
+### Tasks Supported
+
+| Task | Description |
+|------|------------|
+| Segmentation | Predict vessel mask for each pixel |
+| Classification | Predict disease/quality category for image |
 
 ---
 
@@ -34,6 +53,7 @@ Seg_UKAN/
 ├── dataset.py
 ├── train.py
 ├── val.py
+├── test_eval.py
 ├── config.py
 ├── utils.py
 ├── losses.py
@@ -41,9 +61,9 @@ Seg_UKAN/
 ├── prepare_fives.py
 ├── requirements.txt
 ├── environment.yml
-├── .gitignore
+├── README.md
 │
-└── datasets/ (not included in repo)
+├── datasets/ (not included)
 └── outputs/ (generated during training)
 
 yaml
@@ -53,13 +73,13 @@ Copy code
 
 ## 📊 Dataset
 
-This project uses the **FIVES dataset** for retinal vessel segmentation.
+This project uses the **FIVES dataset**.
 
 The dataset is NOT included in this repository.
 
 ### 📥 Download Instructions
 
-Download FIVES dataset manually and place it in:
+Download the FIVES dataset manually and place it in:
 
 datasets/FIVES/
 
@@ -80,21 +100,23 @@ datasets/
 yaml
 Copy code
 
+Classification labels are derived from dataset metadata or image naming conventions.
+
 ---
 
 ## ⚙️ Installation
 
-### Option 1 – Using pip
+### Using pip
 
 ```bash
 pip install -r requirements.txt
-Option 2 – Using Conda
+Using Conda
 bash
 Copy code
 conda env create -f environment.yml
 conda activate seg_ukan
 🚀 Training
-To train the model:
+To train segmentation + classification:
 
 bash
 Copy code
@@ -108,32 +130,42 @@ bash
 Copy code
 python test_eval.py
 📊 Metrics
-The model supports:
-
+Segmentation Metrics
 IoU (Intersection over Union)
 
 Dice Score
 
-Confusion Matrix
-
 Pixel Accuracy
 
+Confusion Matrix
+
+Classification Metrics
+Accuracy
+
+Precision
+
+Recall
+
+F1-score
+
 📦 Outputs
-Training outputs are stored in:
+Training results are saved in:
 
 Copy code
 outputs/
-This folder contains:
+Contains:
 
 Model checkpoints (.pth)
 
-Accuracy curves
-
 Loss curves
+
+IoU curves
 
 Confusion matrices
 
-This folder is excluded from version control.
+Classification reports
+
+This directory is excluded from version control.
 
 🛠 Requirements
 Python 3.10+
@@ -148,10 +180,7 @@ matplotlib
 
 scikit-learn
 
-(See requirements.txt for full list.)
+See requirements.txt for full dependency list.
 
 🧑‍💻 Author
 Taraka Ram Paladugu
-
-📜 License
-This project is released under the MIT License.
